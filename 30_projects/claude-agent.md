@@ -77,7 +77,20 @@ claude-agent/
 
 ## Problems solved
 
-*(empty — will fill as we go)*
+## Problems solved
+
+- GitHub Actions 403 error when posting comments — fixed by adding
+  `permissions: pull-requests: write` to the workflow YAML file.
+  GitHub Actions tokens have read-only permissions by default.
+
+- github_client.py created on wrong branch — was on test/first-pr
+  instead of main. Fixed by using `git checkout main -- agent/github_client.py`
+  to copy the file across branches.
+
+- Vault not accessible on GitHub Actions — the Linux machine GitHub
+  spins up has no access to local Mac files. Fixed by adding a second
+  checkout step in the workflow that downloads the vault repo onto
+  the GitHub machine before running the agent.
 
 ---
 
