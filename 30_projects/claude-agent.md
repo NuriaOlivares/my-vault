@@ -77,8 +77,6 @@ claude-agent/
 
 ## Problems solved
 
-## Problems solved
-
 - GitHub Actions 403 error when posting comments — fixed by adding
   `permissions: pull-requests: write` to the workflow YAML file.
   GitHub Actions tokens have read-only permissions by default.
@@ -91,6 +89,11 @@ claude-agent/
   spins up has no access to local Mac files. Fixed by adding a second
   checkout step in the workflow that downloads the vault repo onto
   the GitHub machine before running the agent.
+
+- Vault update workflow not triggering as expected — resolved by merging
+  a fix in `agent/vault_update.py`. The change was a minor whitespace
+  adjustment to the `open()` call in `read_vault_file`, used to produce
+  a real diff and confirm the workflow trigger was working correctly.
 
 ---
 
